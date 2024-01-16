@@ -1,7 +1,8 @@
 // wait till promise resolve / reject
 
 // promises --> pending , fullfulled / reject
-import friedRicePromise from "./myPromises.js";
+// import friedRicePromise from "./myPromises.js";
+const friedRicePromise = require("./myPromises.js");
 
 async function handlePromise() {
   try {
@@ -13,6 +14,9 @@ async function handlePromise() {
     console.log(error);
   }
 }
+
+// handlePromise();
+
 
 // what this async function returns ?
 

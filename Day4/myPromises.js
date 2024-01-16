@@ -23,6 +23,7 @@
 //     reject("Could not fullfiled");
 //   }
 // });
+// console.log(friedRicePromise);
 
 function friedRicePromise() {
   return new Promise((resolve, reject) => {
@@ -35,7 +36,8 @@ function friedRicePromise() {
   });
 }
 
-export default friedRicePromise;
+// export default friedRicePromise;
+module.exports = friedRicePromise;
 
 // consume a promise
 // console.log(friedRicePromise);

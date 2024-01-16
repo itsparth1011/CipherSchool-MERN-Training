@@ -43,16 +43,16 @@
 
 
 
-// console.log("script start.....");
+console.log("script start.....");
 
-// const setTimeoutId = setTimeout(() => {
-//   console.log("SetTimeout1");
-// }, 1000);
+const setTimeoutId = setTimeout(() => {
+  console.log("SetTimeout1");
+}, 1000);
 
-// clearTimeout(setTimeoutId);
+clearTimeout(setTimeoutId);
 
-// console.log("script end");
-// // code that takes 1 hr.
+console.log("script end");
+// code that takes 1 hr.
 
 
 

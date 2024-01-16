@@ -1,8 +1,9 @@
 
 
-import friedRicePromise from "./myPromises.js";
+// import friedRicePromise from "./myPromises.js";
+const friedRicePromise = require("./myPromises.js");
 
-console.log("Script Start");
+console.log("Script Start")
 
 setTimeout(() => {
   console.log("Hello from settimeout");
