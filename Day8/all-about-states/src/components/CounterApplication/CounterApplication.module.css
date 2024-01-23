@@ -1,0 +1,12 @@
+.counter{
+    max-width: 900px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+button{
+    border: 2px solid blue;
+    margin: 0.5rem;
+
+}
