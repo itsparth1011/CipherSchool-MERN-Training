@@ -20,8 +20,6 @@ function App() {
       completed: true
     }
   ])
-
-
   return (
     <>
     <AddtodoForm/>
@@ -31,18 +29,3 @@ function App() {
 }
 
 export default App
-
-//create a function in app 
-// that function will take newTodo as input                      
-// then this function add newTodo to app state           
-
-
-// pass this function to addTodoForm via prop
-// accept this function inside AddtodoForm 
-
-
-// onsubmit event 
-// create newtodo (already done)
-// call that function (addTodo)
-
-
