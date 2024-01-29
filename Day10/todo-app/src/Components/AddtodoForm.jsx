@@ -3,14 +3,15 @@ import React, { useState } from "react";
 function AddtodoForm() {
   const [todoTitle, setTodoTitle] = useState(" ");
   function handleSubmit(e) {
-    console.log("hello");
     e.preventDefault();
     const newTodo = {
       id: crypto.randomUUID(),
       title: todoTitle,
       completed: false,
     };
+    console.log(newTodo);
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <input

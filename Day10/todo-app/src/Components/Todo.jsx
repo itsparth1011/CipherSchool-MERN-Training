@@ -6,7 +6,7 @@ function Todo({ todo }) {
     marginTop: "1rem",
     border: "2px solid red",
   };
-  
+
   return (
     <div key={todo.id} style={todoStyle}>
       <p>id: {todo.id}</p>
