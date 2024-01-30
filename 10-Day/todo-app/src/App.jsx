@@ -1,49 +1,72 @@
-import React, { useState } from 'react'
-import AddtodoForm from './Components/AddtodoForm'
-import TodoList from './Components/TodoList'
+import React, { useState } from "react";
+import AddtodoForm from "./Components/AddtodoForm";
+import TodoList from "./Components/TodoList";
+import styles from "./App.module.css";
+
+const todoList = [
+  {
+    id: "1",
+    title: "Complete Task A",
+    completed: false,
+  },
+  {
+    id: "2",
+    title: "Read Book",
+    completed: true,
+  },
+  {
+    id: "3",
+    title: "Write Code",
+    completed: true,
+  },
+];
 
 function App() {
-  const [todos, setTodos] = useState([
-    {
-      id: "1",
-      title: "Complete Task A",
-      completed: false
-    },
-    {
-      id: "2",
-      title: "Read Book",
-      completed: true
-    },
-    {
-      id: "3",
-      title: "Write Code",
-      completed: true
-    }
-  ])
+  const [todos, setTodos] = useState(todoList);
 
-  // function 
+  function addTodo(newTodo) {
+    setTodos((prevTodos) => [...prevTodos, newTodo]);
+  }
+
+  function deleteTodo(id) {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  }
+
+  function toggleCompleted(id) {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => {
+        if (todo.id == id) {
+          return { ...todo, completed: !todo.completed };
+        } else {
+          return { ...todo };
+        }
+      })
+    );
+  }
 
   return (
-    <>
-    <AddtodoForm/>
-    <TodoList listTodos = {todos} />
-    </>
-  )
+    
+    <div className={styles.App}>
+      <h1 className={styles.heading}>Todo Appliation</h1>
+      <AddtodoForm addTodo={addTodo} />
+      <TodoList
+        listTodos={todos}
+        deleteTodo={deleteTodo}
+        toggleCompleted={toggleCompleted}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
 
-//create a function in app 
-// that function will take newTodo as input                      
-// then this function add newTodo to app state           
-
+//create a function in app
+// that function will take newTodo as input
+// then this function add newTodo to app state
 
 // pass this function to addTodoForm via prop
-// accept this function inside AddtodoForm 
+// accept this function inside AddtodoForm
 
-
-// onsubmit event 
+// onsubmit event
 // create newtodo (already done)
 // call that function (addTodo)
-
-

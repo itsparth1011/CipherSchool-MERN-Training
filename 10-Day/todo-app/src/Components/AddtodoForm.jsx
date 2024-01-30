@@ -1,29 +1,36 @@
 import React, { useState } from "react";
+import styles from "./AddtodoForm.module.css";
 
-function AddtodoForm() {
-  const [todoTitle, setTodoTitle] = useState(" ");
+function AddtodoForm({ addTodo }) {
+  const [todoTitle, setTodoTitle] = useState("");
+
   function handleSubmit(e) {
     e.preventDefault();
+
     const newTodo = {
       id: crypto.randomUUID(),
       title: todoTitle,
       completed: false,
     };
-    console.log(newTodo);
+    addTodo(newTodo);
+    todoTitle(" ");
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <input
         type="text"
+        className={styles.todoinput}
         name="todo-title-input"
         id="todo-title-input"
         value={todoTitle}
+        
         onChange={(e) => {
           setTodoTitle(e.target.value);
         }}
       />
-      <button type="submit">Add</button>
+
+      <button type="submit" className={styles.todoButton}>Add</button>
     </form>
   );
 }
