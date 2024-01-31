@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./AddtodoForm.module.css";
+import { ToastContainer, toast } from 'react-toastify';
 
 function AddtodoForm({ addTodo }) {
   const [todoTitle, setTodoTitle] = useState("");
@@ -7,13 +8,19 @@ function AddtodoForm({ addTodo }) {
   function handleSubmit(e) {
     e.preventDefault();
 
+    if (todoTitle.trim().length === 0) {
+      setTodoTitle("")
+      toast("Cannot enter Empty string");
+      return;
+    }
+
     const newTodo = {
       id: crypto.randomUUID(),
       title: todoTitle,
       completed: false,
     };
     addTodo(newTodo);
-    todoTitle(" ");
+    setTodoTitle("");
   }
 
   return (
@@ -24,13 +31,14 @@ function AddtodoForm({ addTodo }) {
         name="todo-title-input"
         id="todo-title-input"
         value={todoTitle}
-        
         onChange={(e) => {
           setTodoTitle(e.target.value);
         }}
       />
 
-      <button type="submit" className={styles.todoButton}>Add</button>
+      <button type="submit" className={styles.todoButton}>
+        Add
+      </button>
     </form>
   );
 }

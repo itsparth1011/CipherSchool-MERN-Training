@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import AddtodoForm from "./Components/AddtodoForm";
 import TodoList from "./Components/TodoList";
 import styles from "./App.module.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const todoList = [
   {
@@ -12,12 +14,12 @@ const todoList = [
   {
     id: "2",
     title: "Read Book",
-    completed: true,
+    completed: false,
   },
   {
     id: "3",
     title: "Write Code",
-    completed: true,
+    completed: false,
   },
 ];
 
@@ -44,17 +46,33 @@ function App() {
     );
   }
 
+  function updateTitle(id, title){
+    setTodos((prevTodos) => {})
+  }
+
   return (
-    
-    <div className={styles.App}>
-      <h1 className={styles.heading}>Todo Appliation</h1>
-      <AddtodoForm addTodo={addTodo} />
-      <TodoList
-        listTodos={todos}
-        deleteTodo={deleteTodo}
-        toggleCompleted={toggleCompleted}
-      />
-    </div>
+    <>
+      <ToastContainer />
+      <div className={styles.App}>
+        <h1 className={styles.heading}>Todo Appliation</h1>
+        <AddtodoForm addTodo={addTodo} />
+        <TodoList
+          listTodos={todos}
+          deleteTodo={deleteTodo}
+          toggleCompleted={toggleCompleted}
+        />
+        {todos.length > 0 ? (
+          <button
+            className={styles.clearAll}
+            onClick={() => {
+              setTodos([]);
+            }}
+          >
+            Clear All Todos
+          </button>
+        ) : null}
+      </div>
+    </>
   );
 }
 

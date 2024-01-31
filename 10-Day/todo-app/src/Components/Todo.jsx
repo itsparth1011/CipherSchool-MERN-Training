@@ -1,32 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
+import styles from "./Todo.module.css";
+import { MdDeleteForever } from "react-icons/md";
+import EditTodo from "./EditTodo";
 
-function Todo({ todo, deleteTodo, toggleCompleted}) {
-  const todoStyle = {
-    padding: "1rem",
-    marginTop: "1rem",
-    border: "2px solid red",
-  };
+function Todo({ todo, deleteTodo, toggleCompleted }) {
 
+  const [isUpdateMode, setUpdateMode] = useState(false);
   function handleDelete() {
     deleteTodo(todo.id);
   }
 
-  function handleToggle(){
+  function handleToggle() {
     toggleCompleted(todo.id);
   }
+  if(isUpdateMode){
+    return <EditTodo />;
+  }
 
-
-const titleStyle = {
-  textDecoration : todo.completed && "line-through",
-  opacity: todo.completed && "0.6",
-}
   return (
-    <div key={todo.id} style={todoStyle}>
-      <p>id: {todo.id}</p>
-      <p style={titleStyle}>title: {todo.title}</p>
-      <p>Completed: {todo.completed ? "true" : "false"}</p>
-      <button onClick={handleDelete}>Delete</button>
-      <button onClick={handleToggle}>Toggle completed</button>
+    <div className={styles.todo}>
+      <h3 className={todo.completed ? styles.completed : ""}>{todo.title}</h3>
+
+      <div className={styles.buttonContainer}>
+        <button onClick={() => setUpdateMode(!isUpdateMode)}>Update</button>
+        <input
+          type="checkbox"
+          name="todo-checkbox"
+          id="todo-checkbox"
+          checked={todo.completed}
+          onChange={handleToggle}
+          className={styles.todoCheckbox}
+        />
+        {/* <button onClick={handleToggle} className={styles.button}>
+          Toggle
+        </button> */}
+        <button onClick={handleDelete} className={styles.button}>
+        <MdDeleteForever />
+        </button>
+      </div>
     </div>
   );
 }
