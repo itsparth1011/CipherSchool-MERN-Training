@@ -19,6 +19,7 @@ function AddtodoForm({ addTodo }) {
       title: todoTitle,
       completed: false,
     };
+
     addTodo(newTodo);
     setTodoTitle("");
   }
@@ -30,7 +31,9 @@ function AddtodoForm({ addTodo }) {
         className={styles.todoinput}
         name="todo-title-input"
         id="todo-title-input"
+        placeholder="Enter your task..."
         value={todoTitle}
+        autoComplete="off"
         onChange={(e) => {
           setTodoTitle(e.target.value);
         }}

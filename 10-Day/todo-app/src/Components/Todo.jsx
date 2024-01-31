@@ -3,9 +3,9 @@ import styles from "./Todo.module.css";
 import { MdDeleteForever } from "react-icons/md";
 import EditTodo from "./EditTodo";
 
-function Todo({ todo, deleteTodo, toggleCompleted }) {
-
+function Todo({ todo, deleteTodo, toggleCompleted, updateTitle }) {
   const [isUpdateMode, setUpdateMode] = useState(false);
+  
   function handleDelete() {
     deleteTodo(todo.id);
   }
@@ -13,8 +13,16 @@ function Todo({ todo, deleteTodo, toggleCompleted }) {
   function handleToggle() {
     toggleCompleted(todo.id);
   }
-  if(isUpdateMode){
-    return <EditTodo />;
+
+  if (isUpdateMode) {
+    return (
+      <EditTodo
+        id={todo.id}
+        updateTitle={updateTitle}
+        setUpdateMode={setUpdateMode}
+        title={todo.title}
+      />
+    );
   }
 
   return (
@@ -22,7 +30,7 @@ function Todo({ todo, deleteTodo, toggleCompleted }) {
       <h3 className={todo.completed ? styles.completed : ""}>{todo.title}</h3>
 
       <div className={styles.buttonContainer}>
-        <button onClick={() => setUpdateMode(!isUpdateMode)}>Update</button>
+        <button onClick={() => setUpdateMode(true)}>Update</button>
         <input
           type="checkbox"
           name="todo-checkbox"
@@ -35,7 +43,7 @@ function Todo({ todo, deleteTodo, toggleCompleted }) {
           Toggle
         </button> */}
         <button onClick={handleDelete} className={styles.button}>
-        <MdDeleteForever />
+          <MdDeleteForever />
         </button>
       </div>
     </div>

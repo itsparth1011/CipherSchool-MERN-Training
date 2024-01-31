@@ -46,8 +46,16 @@ function App() {
     );
   }
 
-  function updateTitle(id, title){
-    setTodos((prevTodos) => {})
+  function updateTitle(id, title) {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, title: title };
+        } else {
+          return { ...todo };
+        }
+      })
+    );
   }
 
   return (
@@ -60,6 +68,7 @@ function App() {
           listTodos={todos}
           deleteTodo={deleteTodo}
           toggleCompleted={toggleCompleted}
+          updateTitle={updateTitle}
         />
         {todos.length > 0 ? (
           <button
