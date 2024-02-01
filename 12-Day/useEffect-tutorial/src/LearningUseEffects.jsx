@@ -34,11 +34,11 @@ function LearningUseEffects() {
         Increase count1
       </button>
 
-      <h1>Counter app 2</h1>
+      {/* <h1>Counter app 2</h1>
       <h1>{count2}</h1>
       <button onClick={() => setCount2((count2) => count2 + 1)}>
         Increase count2
-      </button>
+      </button> */}
     </div>
   );
 }
