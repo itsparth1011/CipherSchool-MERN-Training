@@ -1,0 +1,21 @@
+.nav {
+  /* border: 2px solid white; */
+
+  /* margin: auto; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navItems {
+  /* border: 2px solid white; */
+  display: flex;
+  list-style-type: none;
+  gap: 1rem;
+}
+a {
+  color: white;
+  text-decoration: underline;
+}
+a:hover {
+  color: lightgray;
+}

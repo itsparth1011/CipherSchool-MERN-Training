@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
 
-function Completed() {
+function Completed({ todos }) {
+  const completedTodos = todos.filter((todo) => todo.completed);
+
   return (
-    <h1>Completed Page</h1>
-  )
+    <div>
+      {completedTodos.map((todo) => (
+        <div key={todo.id}>
+          <h2>{todo.title}</h2>
+        </div>
+      ))}
+    </div>
+  );
 }
 
-export default Completed
+export default Completed;

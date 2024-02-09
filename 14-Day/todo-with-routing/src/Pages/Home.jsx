@@ -5,27 +5,10 @@ import styles from "./Home.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const todoList = [
-  {
-    id: "1",
-    title: "Complete Task A",
-    completed: false,
-  },
-  {
-    id: "2",
-    title: "Read Book",
-    completed: false,
-  },
-  {
-    id: "3",
-    title: "Write Code",
-    completed: false,
-  },
-];
 
-function Home() {
-  const [todos, setTodos] = useState(todoList);
 
+function Home({todos, setTodos}) {
+  
   function addTodo(newTodo) {
     setTodos((prevTodos) => [...prevTodos, newTodo]);
   }
