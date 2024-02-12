@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "basic app",
+  "main": "Server.js",
+  "scripts": {
+    "dev" : "nodemon Server.js",
+    "start": "node server.js"
+  },
+  "author": "Bhupendra",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
