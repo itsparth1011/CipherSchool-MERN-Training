@@ -1,4 +1,5 @@
 const express = require("express");
+const fs = require("fs")
 const todos = require("./db.json")
 const bodyParser = require("body-parser");
 const app = express();
@@ -43,7 +44,28 @@ app.get("/api/todos/:id", (req, res) => {
 })
 
 //create todo
-app.post("./api/todos")
+app.post("/api/todos", (req, res) => {
+    if (!("title" in req.body)) {
+        res.status(500).json({ message: "Internal server error" })
+    } else if (!("completed in req.body")) {
+        res.status(500).json({ message: "Internal server error" })
+    } else {
+        const id = todos.length + 1;
+        const newTodo = {
+            id: id.toString(),
+            title: req.body.title,
+            completed: req.body.completed
+        }
+        todos.push(newTodo);
+        fs.writeFile("db.json", JSON.stringify(todos), "utf-8", (err) => {
+            if (err) {
+                res.status(500).json({ message: "Internal server error" })
+            } else {
+                res.status(200).json(newTodo)
+            }
+        })
+    }
+})
 
 
 app.listen(port, () => {

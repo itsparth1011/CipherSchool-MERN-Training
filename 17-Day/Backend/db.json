@@ -1,23 +1,8 @@
 [
-  {
-    "id": "1",
-    "title": "learn node js",
-    "completed": true
-  },
-  {
-    "id": "2",
-    "title": "learn EXPRESS",
-    "completed": true
-  },
-  {
-    "id": "3",
-    "title": "learn BACKEND",
-    "completed": false
-  },
-  {
-    "id": "4",
-    "title": "CMPLETE MERN",
-    "completed": false
-  }
-  
+  { "id": "1", "title": "learn node js", "completed": true },
+  { "id": "2", "title": "learn EXPRESS", "completed": true },
+  { "id": "3", "title": "learn BACKEND", "completed": false },
+  { "id": "4", "title": "CMPLETE MERN", "completed": false },
+  { "id": "5", "title": "myVal", "completed": true },
+  { "id": "6", "title": "myVal", "completed": false }
 ]
