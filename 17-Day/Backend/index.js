@@ -47,7 +47,7 @@ app.get("/api/todos/:id", (req, res) => {
 app.post("/api/todos", (req, res) => {
     if (!("title" in req.body)) {
         res.status(500).json({ message: "Internal server error" })
-    } else if (!("completed in req.body")) {
+    } else if (!("completed" in req.body)) {
         res.status(500).json({ message: "Internal server error" })
     } else {
         const id = todos.length + 1;
@@ -66,6 +66,21 @@ app.post("/api/todos", (req, res) => {
         })
     }
 })
+
+
+// Update todo
+
+app.patch("/api/todos/:id", (req, res) => {
+    const id = req.params.id
+    const todo = todos.find((todo) => todo.id === id)
+    if (todo) {
+        todo.title = "title" in req.body ? req.body.title : todo.title 
+        res.status(200).json({ message: "trying to find todo" })
+    } else {
+        res.status(404).json({ message: `Todo not found with ${id}` })
+    }
+})
+
 
 
 app.listen(port, () => {
